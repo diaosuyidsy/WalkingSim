@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4341001190943612}
   m_Layer: 0
-  m_Name: HallWayConnection
+  m_Name: HallWayConnection360
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2064,8 +2064,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1066494492463228}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -46, y: 0, z: -65.28}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: -51.81, y: 0, z: -53.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4154976288593966}
@@ -2077,7 +2077,7 @@ Transform:
   - {fileID: 4351556366586026}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!4 &4341031931161220
 Transform:
   m_ObjectHideFlags: 1
@@ -8137,11 +8137,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52f2117f4879408282b178e2b940f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConnectionPrePos1: {fileID: 4351556366586026}
-  ConnectionPrePos2: {fileID: 4543926672661164}
-  Connection1: {fileID: 4161827810980394}
-  Connection2: {fileID: 4358023613620334}
+  ConnectionRight: {fileID: 4161827810980394}
+  ConnectionLeft: {fileID: 4358023613620334}
   EndingHolder: {fileID: 1157806418868556}
+  ConnectionRightWall: {fileID: 0}
+  ConnectionLeftWall: {fileID: 0}
   FirstEntry: 1
 --- !u!114 &114954663245760136
 MonoBehaviour:

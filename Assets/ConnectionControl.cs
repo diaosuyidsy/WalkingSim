@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class ConnectionControl : MonoBehaviour
 {
-    public Transform ConnectionPrePos1;
-    public Transform ConnectionPrePos2;
-    public Transform Connection1;
-    public Transform Connection2;
+    //public Transform ConnectionPrePos1;
+    //public Transform ConnectionPrePos2;
+    public Transform ConnectionRight;
+    public Transform ConnectionLeft;
     public GameObject EndingHolder;
+    public GameObject ConnectionRightWall;
+    public GameObject ConnectionLeftWall;
     public bool FirstEntry = true;
 
     private void OnTriggerEnter(Collider other)
@@ -23,8 +25,9 @@ public class ConnectionControl : MonoBehaviour
                 setOtherHallwaysFirstEntryTrue();
 
                 // Connect other hallways
-                Connect(Connection1.position, ConnectionPrePos1);
-                Connect(Connection2.position, ConnectionPrePos2);
+                //Connect(Connection1.position, ConnectionPrePos1);
+                //Connect(Connection2.position, ConnectionPrePos2);
+                ConnectTwoHallways();
 
                 // If this is true, then need to display the ending
                 if (GameManager.GM.AddCount())
@@ -35,6 +38,13 @@ public class ConnectionControl : MonoBehaviour
             }
         }
     }
+
+    void ConnectTwoHallways()
+    {
+        ConnectionRightWall.transform.position = ConnectionRight.position;
+        ConnectionLeftWall.transform.position = ConnectionLeft.position;
+    }
+
 
     void Connect(Vector3 Pos, Transform PrePos)
     {
