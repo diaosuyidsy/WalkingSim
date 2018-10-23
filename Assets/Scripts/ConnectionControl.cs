@@ -11,9 +11,10 @@ public class ConnectionControl : MonoBehaviour
     public GameObject EndingHolder;
     public GameObject ConnectionRightWall;
     public GameObject ConnectionLeftWall;
+    public GameObject Closing;
     public bool FirstEntry = true;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter (Collider other)
     {
         if (other.tag == "Player")
         {
@@ -21,50 +22,57 @@ public class ConnectionControl : MonoBehaviour
             if (FirstEntry)
             {
                 FirstEntry = false;
+
                 // We need to set all other hallways' FirstEntry true
-                setOtherHallwaysFirstEntryTrue();
+                setOtherHallwaysFirstEntryTrue ();
 
                 // Connect other hallways
-                //Connect(Connection1.position, ConnectionPrePos1);
-                //Connect(Connection2.position, ConnectionPrePos2);
-                ConnectTwoHallways();
+                ConnectTwoHallways ();
+
+                // Show the closing so that player cannot walk back
+                if (Closing != null)
+                    Closing.SetActive (true);
 
                 // If this is true, then need to display the ending
-                if (GameManager.GM.AddCount())
+                if (GameManager.GM.AddCount ())
                 {
-                    Debug.Log("Set Ending True");
-                    EndingHolder.SetActive(true);
+                    Debug.Log ("Set Ending True");
+                    EndingHolder.SetActive (true);
                 }
             }
         }
     }
 
-    void ConnectTwoHallways()
+    void ConnectTwoHallways ()
     {
         ConnectionRightWall.transform.position = ConnectionRight.position;
         ConnectionLeftWall.transform.position = ConnectionLeft.position;
+        if (transform.parent.parent.gameObject != GameManager.GM.FirstHallway)
+            GameManager.GM.FirstHallway.SetActive (false);
     }
 
 
-    void Connect(Vector3 Pos, Transform PrePos)
+    void Connect (Vector3 Pos, Transform PrePos)
     {
         // Get the correct Rotation
         var connectionZ = Pos.z - PrePos.position.z;
         var connectionX = Pos.x - PrePos.position.x;
-        var angle = Mathf.Atan2(connectionZ, connectionX);
+        var angle = Mathf.Atan2 (connectionZ, connectionX);
         var angleInDegree = Mathf.Rad2Deg * angle;
         angleInDegree *= -1;
 
-        GameManager.GM.ChangeWall(Pos, angleInDegree);
+        GameManager.GM.ChangeWall (Pos, angleInDegree);
     }
 
-    public void setOtherHallwaysFirstEntryTrue()
+    public void setOtherHallwaysFirstEntryTrue ()
     {
         for (int i = 0; i < GameManager.GM.HallwayAlternates.Length; i++)
         {
             if (GameManager.GM.HallwayAlternates[i] != transform.parent.gameObject)
             {
-                GameManager.GM.HallwayAlternates[i].GetComponentInChildren<ConnectionControl>().FirstEntry = true;
+                GameManager.GM.HallwayAlternates[i].GetComponentInChildren<ConnectionControl> ().FirstEntry = true;
+                // Also set the closing to false
+                GameManager.GM.HallwayAlternates[i].GetComponentInChildren<ConnectionControl> ().Closing.SetActive (false);
             }
         }
     }
