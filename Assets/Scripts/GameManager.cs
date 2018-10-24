@@ -10,52 +10,53 @@ public class GameManager : MonoBehaviour
     public GameObject FirstHallway;
     public GameObject[] HallwayAlternates;
     public GameObject EndingScene;
+    public AudioClip[] Noises;
     private int HallwayIndex = 0;
     private int count = 0;
 
-    private void Awake ()
+    private void Awake()
     {
         GM = this;
     }
 
-    private void Update ()
+    private void Update()
     {
         // Test
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast (ray, out hit))
+        if (Physics.Raycast(ray, out hit))
         {
             if (hit.transform.tag == "EndWall")
             {
-                hit.transform.gameObject.GetComponent<EndWallControl> ().RevealOtherWall ();
+                hit.transform.gameObject.GetComponent<EndWallControl>().RevealOtherWall();
             }
 
             if (hit.transform.tag == "StrangeThing")
             {
-                EndingScene.SetActive (true);
+                EndingScene.SetActive(true);
             }
         }
     }
 
-    public bool AddCount ()
+    public bool AddCount()
     {
         count++;
         // If we counted to Max, then ending comes
         return count == MaxCount;
     }
 
-    public void ChangeWall (Vector3 Pos, float Rot)
+    public void ChangeWall(Vector3 Pos, float Rot)
     {
         // Get the current Hallway Alternates that gets moved
         var thisWall = HallwayAlternates[HallwayIndex];
-        thisWall.SetActive (true);
+        thisWall.SetActive(true);
         thisWall.transform.position = Pos;
-        thisWall.transform.eulerAngles = new Vector3 (0, Rot, 0);
+        thisWall.transform.eulerAngles = new Vector3(0, Rot, 0);
         // Then change the hallway index to for next access of Hallway Alternates
-        Debug.Log (HallwayIndex);
+        Debug.Log(HallwayIndex);
         if (HallwayIndex == 3)
-            Destroy (FirstHallway);
+            Destroy(FirstHallway);
         HallwayIndex++;
         if (HallwayIndex > HallwayAlternates.Length - 1)
             HallwayIndex = 0;
