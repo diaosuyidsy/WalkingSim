@@ -13,8 +13,9 @@ public class ConnectionControl : MonoBehaviour
     public GameObject ConnectionLeftWall;
     public GameObject Closing;
     public bool FirstEntry = true;
+    private float NoiseRaiseTime = 10f;
 
-    private void OnTriggerEnter (Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
@@ -24,42 +25,52 @@ public class ConnectionControl : MonoBehaviour
                 FirstEntry = false;
 
                 // We need to set all other hallways' FirstEntry true
-                setOtherHallwaysFirstEntryTrue ();
+                setOtherHallwaysFirstEntryTrue();
 
                 // Connect other hallways
-                ConnectTwoHallways ();
+                ConnectTwoHallways();
 
                 // Show the closing so that player cannot walk back
                 if (Closing != null)
-                    Closing.SetActive (true);
+                    Closing.SetActive(true);
 
                 // If this is true, then need to display the ending
-                if (GameManager.GM.AddCount ())
+                if (GameManager.GM.AddCount())
                 {
-                    Debug.Log ("Set Ending True");
-                    EndingHolder.SetActive (true);
+                    Debug.Log("Set Ending True");
+                    EndingHolder.SetActive(true);
                 }
             }
         }
     }
 
-    void ConnectTwoHallways ()
+    IEnumerator RaiseNoiseCutoff()
+    {
+        while (NoiseRaiseTime > 0f)
+        {
+            NoiseRaiseTime -= Time.deltaTime;
+            yield return null;
+        }
+    }
+
+
+    void ConnectTwoHallways()
     {
         ConnectionRightWall.transform.position = ConnectionRight.position;
         ConnectionLeftWall.transform.position = ConnectionLeft.position;
         if (transform.parent.parent.gameObject != GameManager.GM.FirstHallway)
-            GameManager.GM.FirstHallway.SetActive (false);
+            GameManager.GM.FirstHallway.SetActive(false);
     }
 
-    public void setOtherHallwaysFirstEntryTrue ()
+    public void setOtherHallwaysFirstEntryTrue()
     {
         for (int i = 0; i < GameManager.GM.HallwayAlternates.Length; i++)
         {
             if (GameManager.GM.HallwayAlternates[i] != transform.parent.gameObject)
             {
-                GameManager.GM.HallwayAlternates[i].GetComponentInChildren<ConnectionControl> ().FirstEntry = true;
+                GameManager.GM.HallwayAlternates[i].GetComponentInChildren<ConnectionControl>().FirstEntry = true;
                 // Also set the closing to false
-                GameManager.GM.HallwayAlternates[i].GetComponentInChildren<ConnectionControl> ().Closing.SetActive (false);
+                GameManager.GM.HallwayAlternates[i].GetComponentInChildren<ConnectionControl>().Closing.SetActive(false);
             }
         }
     }
