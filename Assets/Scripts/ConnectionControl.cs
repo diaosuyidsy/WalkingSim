@@ -51,19 +51,6 @@ public class ConnectionControl : MonoBehaviour
             GameManager.GM.FirstHallway.SetActive (false);
     }
 
-
-    void Connect (Vector3 Pos, Transform PrePos)
-    {
-        // Get the correct Rotation
-        var connectionZ = Pos.z - PrePos.position.z;
-        var connectionX = Pos.x - PrePos.position.x;
-        var angle = Mathf.Atan2 (connectionZ, connectionX);
-        var angleInDegree = Mathf.Rad2Deg * angle;
-        angleInDegree *= -1;
-
-        GameManager.GM.ChangeWall (Pos, angleInDegree);
-    }
-
     public void setOtherHallwaysFirstEntryTrue ()
     {
         for (int i = 0; i < GameManager.GM.HallwayAlternates.Length; i++)
