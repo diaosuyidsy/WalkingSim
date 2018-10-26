@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ConnectionControl : MonoBehaviour
 {
-    //public Transform ConnectionPrePos1;
-    //public Transform ConnectionPrePos2;
+
     public Transform ConnectionRight;
     public Transform ConnectionLeft;
     public GameObject EndingHolder;
@@ -13,7 +12,7 @@ public class ConnectionControl : MonoBehaviour
     public GameObject ConnectionLeftWall;
     public GameObject Closing;
     public bool FirstEntry = true;
-    private float NoiseRaiseTime = 10f;
+    private float NoiseRaiseTime = 5f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -38,7 +37,18 @@ public class ConnectionControl : MonoBehaviour
                 if (GameManager.GM.AddCount())
                 {
                     Debug.Log("Set Ending True");
+                    GameManager.GM.EndingShow = true;
                     EndingHolder.SetActive(true);
+                }
+                else
+                {
+                    if (GameManager.GM.CompareCount(1))
+                    {
+                        GameManager.GM.NoiseMasterMixer.SetFloat("NoiseCutoff", 500f);
+                    }
+                    else
+                        // If not, then turn up the volume
+                        StartCoroutine(RaiseNoiseCutoff());
                 }
             }
         }
@@ -49,6 +59,8 @@ public class ConnectionControl : MonoBehaviour
         while (NoiseRaiseTime > 0f)
         {
             NoiseRaiseTime -= Time.deltaTime;
+            GameManager.GM.NoiseMasterMixer.SetFloat("NoiseCutoff", GameManager.GM.NoiseCutoff);
+            GameManager.GM.NoiseCutoff += Time.deltaTime * 200f;
             yield return null;
         }
     }

@@ -611,6 +611,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c71e4721786134b2f9dfa00c9b37e0ac, type: 3}
   - {fileID: 8300000, guid: 7e2d1e0d468d740cea9f041f416a82a9, type: 3}
   NoiseMasterMixer: {fileID: 24100000, guid: e0cc7b8fea5792642af27162bfaf7042, type: 2}
+  NoiseCutoff: 0
+  perCutoffGrowth: 1000
+  EndingShow: 0
 --- !u!43 &894807952
 Mesh:
   m_ObjectHideFlags: 0
@@ -1733,7 +1736,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
       propertyPath: movementSettings.RunMultiplier
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8100000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
       propertyPath: m_Enabled

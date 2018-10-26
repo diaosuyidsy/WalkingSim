@@ -12,44 +12,73 @@ public class GameManager : MonoBehaviour
     public GameObject EndingScene;
     public AudioClip[] Noises;
     public AudioMixer NoiseMasterMixer;
+    public float NoiseCutoff;
+    public float perCutoffGrowth = 1000f;
+    public bool EndingShow = false;
 
     private int HallwayIndex = 0;
     private int count = 0;
+    private bool StrangeThingShown = false;
 
-    private void Awake ()
+    private void Awake()
     {
         GM = this;
     }
 
-    private void Update ()
+    private void Start()
     {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-
-        if (Physics.Raycast (ray, out hit))
-        {
-            if (hit.transform.tag == "EndWall")
-            {
-                hit.transform.gameObject.GetComponent<EndWallControl> ().RevealOtherWall ();
-            }
-
-            if (hit.transform.tag == "StrangeThing")
-            {
-                EndingScene.SetActive (true);
-            }
-        }
+        NoiseMasterMixer.GetFloat("NoiseCutoff", out NoiseCutoff);
     }
 
-    public bool AddCount ()
+    private void Update()
+    {
+        if (EndingShow)
+        {
+            RaycastHit[] hits;
+            RaycastHit hit1;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit1))
+            {
+                if (hit1.transform.tag == "EndWall" && !StrangeThingShown)
+                {
+                    hit1.transform.gameObject.GetComponent<EndWallControl>().RevealOtherWall();
+                    StrangeThingShown = true;
+                }
+            }
+
+            hits = Physics.RaycastAll(ray);
+            foreach (RaycastHit hit in hits)
+            {
+                if (hit.transform.tag == "StrangeThing" && StrangeThingShown)
+                {
+                    hit.transform.gameObject.GetComponent<Animator>().SetTrigger("Run_forward");
+                }
+            }
+        }
+
+    }
+
+    public bool AddCount()
     {
         count++;
         // If we counted to Max, then ending comes
         return count == MaxCount;
     }
 
-    public void SetNoiseCutoff (float Cutoff)
+    public bool CompareCount(int offset)
     {
-        NoiseMasterMixer.SetFloat ("NoiseCutoff", Cutoff);
+        return (count + offset) == MaxCount;
+    }
+
+    public void SetNoiseCutoff(float Cutoff)
+    {
+        NoiseMasterMixer.SetFloat("NoiseCutoff", Cutoff);
+    }
+
+    public void SetBlackScreen()
+    {
+        EndingScene.SetActive(true);
     }
 
 }

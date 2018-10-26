@@ -1786,6 +1786,7 @@ GameObject:
   - component: {fileID: 4126884046687532}
   - component: {fileID: 95507293508839632}
   - component: {fileID: 65881493521259872}
+  - component: {fileID: 114952111351664438}
   m_Layer: 0
   m_Name: StrangeThingRight
   m_TagString: StrangeThing
@@ -2227,6 +2228,7 @@ GameObject:
   - component: {fileID: 4093847911340350}
   - component: {fileID: 95836536723280824}
   - component: {fileID: 65717646407123486}
+  - component: {fileID: 114369564185615994}
   m_Layer: 0
   m_Name: StrangeThingLeft
   m_TagString: StrangeThing
@@ -3907,7 +3909,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1157043972479472}
   m_LocalRotation: {x: -0.50000036, y: 0.49999964, z: 0.49999964, w: 0.50000036}
-  m_LocalPosition: {x: 0.0021006954, y: 1.0468682, z: -0.89839494}
+  m_LocalPosition: {x: 0.0020999904, y: 1.0468682, z: -0.8983959}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
   m_Children:
   - {fileID: 4552022210414766}
@@ -9099,8 +9101,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.63, y: 3.3073778, z: 1}
-  m_Center: {x: -0.00000003814705, y: 1.291311, z: -0.84000003}
+  m_Size: {x: 5.11, y: 5.81, z: 1}
+  m_Center: {x: -0.00000003814705, y: 1.291311, z: 7.52}
 --- !u!65 &65833959865916306
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -9123,8 +9125,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.63, y: 3.2526193, z: 1}
-  m_Center: {x: 0, y: 1.3186903, z: -0.84}
+  m_Size: {x: 5.41, y: 5.92, z: 1}
+  m_Center: {x: 0, y: 1.3186903, z: 7.36}
 --- !u!65 &65911414417529880
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -9424,6 +9426,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StrangeThing: {fileID: 1576624331452866}
   theOtherWall: {fileID: 1866561778745100}
+--- !u!114 &114369564185615994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1789922906969222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdacafd8e1bd04399b6ad0fc8af50a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114871042590205572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9455,6 +9468,17 @@ MonoBehaviour:
   ConnectionLeftWall: {fileID: 0}
   Closing: {fileID: 1157076545684718}
   FirstEntry: 1
+--- !u!114 &114952111351664438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1576624331452866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdacafd8e1bd04399b6ad0fc8af50a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &137389161181500068
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -9853,7 +9877,7 @@ ParticleSystem:
         m_RotationOrder: 0
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -9906,7 +9930,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -9959,7 +9983,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -10012,7 +10036,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -14314,7 +14338,7 @@ ParticleSystem:
         m_RotationOrder: 0
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -14367,7 +14391,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -14420,7 +14444,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -14473,7 +14497,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
