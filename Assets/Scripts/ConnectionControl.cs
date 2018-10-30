@@ -44,23 +44,23 @@ public class ConnectionControl : MonoBehaviour
                 {
                     if (GameManager.GM.CompareCount(1))
                     {
-                        GameManager.GM.NoiseMasterMixer.SetFloat("NoiseCutoff", 500f);
+                        StartCoroutine(RaiseNoiseCutoff(-500f));
                     }
                     else
                         // If not, then turn up the volume
-                        StartCoroutine(RaiseNoiseCutoff());
+                        StartCoroutine(RaiseNoiseCutoff(200f));
                 }
             }
         }
     }
 
-    IEnumerator RaiseNoiseCutoff()
+    IEnumerator RaiseNoiseCutoff(float speed)
     {
         while (NoiseRaiseTime > 0f)
         {
             NoiseRaiseTime -= Time.deltaTime;
             GameManager.GM.NoiseMasterMixer.SetFloat("NoiseCutoff", GameManager.GM.NoiseCutoff);
-            GameManager.GM.NoiseCutoff += Time.deltaTime * 200f;
+            GameManager.GM.NoiseCutoff += Time.deltaTime * speed;
             yield return null;
         }
     }
