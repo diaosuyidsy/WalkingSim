@@ -91,7 +91,7 @@ public class ConnectionControl : MonoBehaviour
     {
         for (int i = 0; i < GameManager.GM.HallwayAlternates.Length; i++)
         {
-            if (GameManager.GM.HallwayAlternates[i] != transform.parent.gameObject)
+            if (GameManager.GM.HallwayAlternates[i] != transform.parent.parent.gameObject)
             {
                 GameManager.GM.HallwayAlternates[i].GetComponentInChildren<ConnectionControl>().FirstEntry = true;
                 // Also set the closing to false
