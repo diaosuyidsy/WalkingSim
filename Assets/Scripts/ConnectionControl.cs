@@ -29,6 +29,9 @@ public class ConnectionControl : MonoBehaviour
                 // Connect other hallways
                 ConnectTwoHallways();
 
+                // Display Ring tone
+                StartCoroutine(StartRing(1f));
+
                 // Show the closing so that player cannot walk back
                 if (Closing != null)
                     Closing.SetActive(true);
@@ -52,6 +55,16 @@ public class ConnectionControl : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator StartRing(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        ConnectionRightWall.GetComponentInChildren<AudioSource>().Play();
+        yield return new WaitForSeconds(delay);
+
+        ConnectionLeftWall.GetComponentInChildren<AudioSource>().Play();
     }
 
     IEnumerator RaiseNoiseCutoff(float speed)

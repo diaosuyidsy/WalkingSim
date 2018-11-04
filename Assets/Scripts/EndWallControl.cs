@@ -6,6 +6,7 @@ public class EndWallControl : MonoBehaviour
 {
     public GameObject StrangeThing;
     public GameObject theOtherWall;
+    public bool BeingLookedAt = false;
 
     private bool FirstTime = true;
 
@@ -16,5 +17,11 @@ public class EndWallControl : MonoBehaviour
         FirstTime = false;
         theOtherWall.SetActive(false);
         StrangeThing.SetActive(true);
+    }
+
+    public void LookedAtThisWall()
+    {
+        BeingLookedAt = true;
+        theOtherWall.GetComponent<EndWallControl>().BeingLookedAt = false;
     }
 }

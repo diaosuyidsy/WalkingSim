@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private int HallwayIndex = 0;
     private int count = 0;
     private bool StrangeThingShown = false;
+    private int turnTimes = 2;
 
     private void Awake()
     {
@@ -42,8 +43,16 @@ public class GameManager : MonoBehaviour
             {
                 if (hit1.transform.tag == "EndWall" && !StrangeThingShown)
                 {
-                    hit1.transform.gameObject.GetComponent<EndWallControl>().RevealOtherWall();
-                    StrangeThingShown = true;
+                    if (!hit1.transform.gameObject.GetComponent<EndWallControl>().BeingLookedAt)
+                    {
+                        turnTimes--;
+                        hit1.transform.gameObject.GetComponent<EndWallControl>().LookedAtThisWall();
+                        if (turnTimes == 0)
+                        {
+                            hit1.transform.gameObject.GetComponent<EndWallControl>().RevealOtherWall();
+                            StrangeThingShown = true;
+                        }
+                    }
                 }
             }
 
