@@ -17,6 +17,8 @@ public class EndWallControl : MonoBehaviour
         FirstTime = false;
         theOtherWall.SetActive(false);
         StrangeThing.SetActive(true);
+        // Disable the other Strange Thing colliders
+        StrangeThing.GetComponent<StrangeThingControl>().OnShownThis();
     }
 
     public void LookedAtThisWall()

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StrangeThingControl : MonoBehaviour
 {
+    public GameObject theOtherStrangeThing;
 
     private void FixedUpdate()
     {
@@ -14,5 +15,14 @@ public class StrangeThingControl : MonoBehaviour
     {
         GameManager.GM.SetBlackScreen();
     }
+
+    public void OnShownThis()
+    {
+        foreach (Collider c in theOtherStrangeThing.GetComponents<Collider>())
+        {
+            c.enabled = false;
+        }
+    }
+
 
 }

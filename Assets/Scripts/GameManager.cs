@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
                         {
                             hit1.transform.gameObject.GetComponent<EndWallControl>().RevealOtherWall();
                             StrangeThingShown = true;
+
                         }
                     }
                 }

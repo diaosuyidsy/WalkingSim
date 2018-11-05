@@ -1787,6 +1787,8 @@ GameObject:
   - component: {fileID: 95507293508839632}
   - component: {fileID: 65881493521259872}
   - component: {fileID: 114952111351664438}
+  - component: {fileID: 65314740106307176}
+  - component: {fileID: 65545425856044896}
   m_Layer: 0
   m_Name: StrangeThingRight
   m_TagString: StrangeThing
@@ -2245,6 +2247,8 @@ GameObject:
   - component: {fileID: 95836536723280824}
   - component: {fileID: 65717646407123486}
   - component: {fileID: 114369564185615994}
+  - component: {fileID: 65995386324737056}
+  - component: {fileID: 65810566643460680}
   m_Layer: 0
   m_Name: StrangeThingLeft
   m_TagString: StrangeThing
@@ -9073,6 +9077,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 67a3a6697c1683f44a9192dbbe887806, type: 3}
+--- !u!65 &65314740106307176
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1576624331452866}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 7.32, z: 6.08}
+  m_Center: {x: -1.92, y: 0, z: 2.8}
 --- !u!65 &65389730718054360
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -9097,6 +9113,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.4878564, y: 1.4076414, z: 1}
   m_Center: {x: -0.45203972, y: 0.2038207, z: -6.815549e-16}
+--- !u!65 &65545425856044896
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1576624331452866}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 7.32, z: 6.08}
+  m_Center: {x: 2.48, y: 0, z: 2.8}
 --- !u!65 &65605626722013006
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -9132,7 +9160,19 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5.11, y: 5.81, z: 1}
-  m_Center: {x: -0.00000003814705, y: 1.291311, z: 7.52}
+  m_Center: {x: -0.00000003814705, y: 1.291311, z: 4.21}
+--- !u!65 &65810566643460680
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1789922906969222}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.94, y: 5.81, z: 3.06}
+  m_Center: {x: 2.15, y: 1.291311, z: 4.81}
 --- !u!65 &65833959865916306
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -9156,7 +9196,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5.41, y: 5.92, z: 1}
-  m_Center: {x: 0, y: 1.3186903, z: 7.36}
+  m_Center: {x: 0, y: 1.3186903, z: 4.23}
 --- !u!65 &65911414417529880
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -9169,6 +9209,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 2}
   m_Center: {x: -2, y: 1.5, z: 0}
+--- !u!65 &65995386324737056
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1789922906969222}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.94, y: 5.81, z: 3.06}
+  m_Center: {x: -2.14, y: 1.291311, z: 4.81}
 --- !u!82 &82624616926911398
 AudioSource:
   m_ObjectHideFlags: 1
@@ -9551,6 +9603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StrangeThing: {fileID: 1576624331452866}
   theOtherWall: {fileID: 1866561778745100}
+  BeingLookedAt: 0
 --- !u!114 &114369564185615994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9562,6 +9615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdacafd8e1bd04399b6ad0fc8af50a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theOtherStrangeThing: {fileID: 1576624331452866}
 --- !u!114 &114871042590205572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9575,6 +9629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StrangeThing: {fileID: 1789922906969222}
   theOtherWall: {fileID: 1265837863654190}
+  BeingLookedAt: 0
 --- !u!114 &114930186973676630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9604,6 +9659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdacafd8e1bd04399b6ad0fc8af50a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theOtherStrangeThing: {fileID: 1789922906969222}
 --- !u!137 &137389161181500068
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
