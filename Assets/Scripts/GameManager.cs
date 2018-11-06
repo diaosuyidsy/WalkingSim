@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public bool EndingShow = false;
     public AudioSource GlitchFinalSoundEffect;
     public AudioSource FarawayRingEffect;
+    public int FormerTriggerCount = 0;
 
     private int HallwayIndex = 0;
     private int count = 0;
