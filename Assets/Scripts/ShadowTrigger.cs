@@ -35,7 +35,7 @@ public class ShadowTrigger : MonoBehaviour
         Camera.main.GetComponent<Kino.AnalogGlitch>().verticalJump = amount;
         Camera.main.GetComponent<Kino.AnalogGlitch>().horizontalShake = amount;
         Camera.main.GetComponent<Kino.AnalogGlitch>().colorDrift = amount;
-
+        GameManager.GM.GlitchCasualSoundEffect.Play();
 
         yield return new WaitForSeconds(time);
         Camera.main.GetComponent<Kino.AnalogGlitch>().scanLineJitter = 0f;

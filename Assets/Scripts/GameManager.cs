@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     public float perCutoffGrowth = 1000f;
     public bool EndingShow = false;
     public AudioSource GlitchFinalSoundEffect;
+    public AudioSource GlitchCasualSoundEffect;
     public AudioSource FarawayRingEffect;
     public int FormerTriggerCount = 0;
 
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
     private bool playerStartGlitch = false;
     private bool playedSound = false;
     private GameObject theRevealedMonster;
+    public bool stopTurningUpVolumn = false;
 
     private void Awake()
     {
@@ -123,6 +126,12 @@ public class GameManager : MonoBehaviour
     public void SetBlackScreen()
     {
         EndingScene.SetActive(true);
+        StartCoroutine(SwitchToMenu());
     }
 
+    IEnumerator SwitchToMenu()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("MenuScene");
+    }
 }

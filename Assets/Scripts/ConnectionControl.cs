@@ -45,13 +45,23 @@ public class ConnectionControl : MonoBehaviour
                 }
                 else
                 {
-                    if (GameManager.GM.CompareCount(3))
+                    if (GameManager.GM.CompareCount(2))
                     {
                         StartCoroutine(RaiseNoiseCutoff(-700f));
+                        // Change Eveything Back to Normal, i.e. change door number to normal
+                        GameManager.GM.stopTurningUpVolumn = true;
+                        foreach (var hallway in GameManager.GM.HallwayAlternates)
+                        {
+                            hallway.GetComponentInChildren<FormerTriggerControl>().showNumberPlateHide2();
+                        }
                     }
                     else
-                        // If not, then turn up the volume
-                        StartCoroutine(RaiseNoiseCutoff(200f));
+                    {
+                        if (!GameManager.GM.stopTurningUpVolumn)
+                            // If not, then turn up the volume
+                            StartCoroutine(RaiseNoiseCutoff(200f));
+                    }
+
                 }
             }
         }
